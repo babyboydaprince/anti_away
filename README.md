@@ -31,14 +31,18 @@ it does not leave any running process after closing the script.
 
 ### 🔧 Installation
 ```
-Inside the project directory, run:
+Download project zip file.
+
+Extract it using your favourite tool, ex: winrar, 7-zip.
+
+Inside the project directory, run: 
 
 pip install -r requirements.txt
 
-to install the requirements.
+to install the requirements and you are all set.
 ```
 ```
-Whith the requirements installation finished, 
+With the requirements installation finished, 
 you are ready to run the script.
 
 Have fun :)
