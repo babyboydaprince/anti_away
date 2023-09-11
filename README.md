@@ -45,7 +45,7 @@ to install the requirements and you are all set.
 With the requirements installation finished, 
 you are ready to run the script.
 
-Have fun :)
+Have fun :P
 ```
 
 
