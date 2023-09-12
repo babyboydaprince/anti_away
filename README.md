@@ -11,6 +11,8 @@ Open terminal on anti_away.py file path
 Run simply with:
 
 python anti_away.py
+
+then insert a number value for execution interval.
 ```
 
 ```

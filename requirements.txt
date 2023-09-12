@@ -1,2 +1,4 @@
 keyboard
 emoji
+pyfiglet
+termcolor
