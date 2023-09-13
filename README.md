@@ -33,11 +33,13 @@ it does not leave any running process after closing the script.
 
 ### 🔧 Installation
 ```
-Download project zip file.
+1 - Download project zip file or clone the project:
 
-Extract it using your favourite tool, ex: winrar, 7-zip.
+git clone https://github.com/babyboydaprince/anti_away.git
 
-Inside the project directory, run: 
+2 - Extract it using your favourite tool, ex: winrar, 7-zip.
+
+3 - Inside the project directory, run: 
 
 pip install -r requirements.txt
 
