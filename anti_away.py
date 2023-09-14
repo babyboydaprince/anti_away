@@ -71,6 +71,7 @@ class AntiAway:
 
     def always_here(self, value):
         if self.os_name == 'Linux':
+            # Maintaining F13 untill i find a ghost key
             key = 'F13'
         else:
             key = 'F13'
