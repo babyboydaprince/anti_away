@@ -3,6 +3,8 @@
 Simple python script which uses KEYBOARD lib to contantly press a ghost key.
 Perfect for not being away for inactivity reasons.
 
+![alt text](https://github.com/babyboydaprince/anti_away/blob/main/img/anti_away.gif?raw=true)
+
 ## 🚀 Run
 
 ```
