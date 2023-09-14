@@ -71,7 +71,7 @@ class AntiAway:
 
     def always_here(self, value):
         if self.os_name == 'Linux':
-            key = ' '
+            key = 'F13'
         else:
             key = 'F13'
 
