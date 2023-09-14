@@ -163,7 +163,7 @@ class AntiAway:
                         time.sleep(2)
                         os.system('clear')
                 else:
-                    print("It's recommended to run this script as root (sudo) "
+                    print("\nIt's recommended to run this script as root (sudo) "
                           "on Linux for system-wide installation.\n")
 
                     print("You can run the script as root using: "
