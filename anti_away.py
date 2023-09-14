@@ -3,6 +3,7 @@ import emoji
 import sys
 import keyboard
 import time
+import platform
 from pyfiglet import Figlet
 from termcolor import colored
 from colorama import Fore
@@ -26,12 +27,15 @@ class AntiAway:
         self.boo = emoji.emojize(':ghost:')
         self.constantine = emoji.emojize(':latin_cross:')
 
+        self.os_name = platform.system()
+
         self.main()
 
 
     """MAIN RUNNER"""
     def main(self):
         self.banner()
+        self.os_hint()
         self.action()
 
 
@@ -46,6 +50,13 @@ class AntiAway:
                       attrs=['blink']))
 
 
+    def os_hint(self):
+        if self.os_name == 'Linux':
+            print('Linux OS detected.')
+            print('Hint: You must install the requirements '
+                  'and run the script as root.\n')
+
+
     def wizardry(self):
         print(f"\n{self.boo}")
         sys.stdout.write("It must be some kind of wizardry\n"
@@ -54,12 +65,17 @@ class AntiAway:
                          f"\nHit [ CTRL + C ] to call John Constantine "
                          f"{self.constantine}")
 
-    @staticmethod
-    def always_here(value):
+
+    def always_here(self, value):
+        if self.os_name == 'Linux':
+            key = 'F14'
+        else:
+            key = 'F13'
+
         try:
             i = 1
             while i >= 1:
-                keyboard.send("F13")
+                keyboard.send(key)
                 time.sleep(value)
         except IOError as io:
             if io[0] == errno.EPERM:
