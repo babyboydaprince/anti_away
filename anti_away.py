@@ -1,4 +1,4 @@
-# import emoji
+import emoji
 import sys
 import keyboard
 import time
@@ -18,12 +18,12 @@ class AntiAway:
     """SET-UP"""
     def __init__(self):
         """Unicode emoji print value"""
-        self.boo = '\U0001F47B'
-        self.constantine = '\u271D'
+        # self.boo = '\U0001F47B'
+        # self.constantine = '\u271D'
 
         """In case of emoji lib usage"""
-        # self.boo = emoji.emojize(':ghost:')
-        # self.constantine = emoji.emojize(':latin_cross:')
+        self.boo = emoji.emojize(':ghost:')
+        self.constantine = emoji.emojize(':latin_cross:')
 
         self.main()
 
