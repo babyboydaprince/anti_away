@@ -1,3 +1,4 @@
+import errno
 import emoji
 import sys
 import keyboard
@@ -60,9 +61,11 @@ class AntiAway:
             while i >= 1:
                 keyboard.send("F13")
                 time.sleep(value)
+        except IOError as io:
+            if io[0] == errno.EPERM:
+                sys.exit(f'You must be root/adm to run it: \n{io}')
         except Exception as err:
-            print(f'An exception occurred: {err}')
-
+            print(f'An exception occurred: \n{err}')
 
     def action(self):
         while True:
