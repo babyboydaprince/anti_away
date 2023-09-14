@@ -55,6 +55,9 @@ class AntiAway:
             print('Linux OS detected.')
             print('Hint: You must install the requirements '
                   'and run the script as root.\n')
+        elif self.os_name == 'Windows':
+            print('Windows OS detected.')
+            print('Have fun my child.\n')
 
 
     def wizardry(self):
@@ -68,7 +71,7 @@ class AntiAway:
 
     def always_here(self, value):
         if self.os_name == 'Linux':
-            key = 'F14'
+            key = None
         else:
             key = 'F13'
 
