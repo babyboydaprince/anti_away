@@ -65,7 +65,7 @@ class AntiAway:
             if io[0] == errno.EPERM:
                 sys.exit(f'You must be root/adm to run it: \n{io}')
         except Exception as err:
-            sys.exit(f'\nAn exception occurred: \n{err}')
+            sys.exit(f'\n\nAn exception occurred: \n{err}')
 
     def action(self):
         while True:
