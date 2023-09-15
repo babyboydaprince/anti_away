@@ -1,7 +1,5 @@
-import errno
 import os
 import sys
-import keyboard
 import time
 import platform
 import subprocess
@@ -81,6 +79,8 @@ class AntiAway:
 
 
     def always_here(self, value):
+        import keyboard
+
         if self.os_name == 'Linux':
             # Maintaining F13 until I find a ghost key for linux systems
             key = 'F13'
@@ -93,10 +93,6 @@ class AntiAway:
                 self.running_animation()
                 keyboard.send(key)
                 time.sleep(value)
-
-        except IOError as io:
-            if io[0] == errno.EPERM:
-                sys.exit(f'You must be root/adm to run it: \n{io}')
 
         except Exception as err:
             sys.exit(f'\n\nAn exception occurred: \n{err}')
