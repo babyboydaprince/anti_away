@@ -196,4 +196,5 @@ class AntiAway:
 
 
 if __name__ == '__main__':
+    # Time to Rock!
     AntiAway()
