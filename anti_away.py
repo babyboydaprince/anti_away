@@ -3,6 +3,7 @@ import sys
 import time
 import platform
 import subprocess
+# import threading
 
 
 """Anti-Away was created to assist you 
@@ -16,8 +17,16 @@ class AntiAway:
     """SET-UP"""
     def __init__(self):
         self.os_name = platform.system()
+        # self.background_task = None
 
-        self.install_requirements()
+        self.requirements = [
+            'keyboard',
+            'emoji',
+            'pyfiglet',
+            'termcolor',
+            'colorama']
+
+        self.install_missing_packages(self.requirements)
         self.main()
 
 
@@ -25,8 +34,15 @@ class AntiAway:
     def main(self):
         self.banner()
         self.os_hint()
-        self.action()
+        interval = self.action_menu()
+        self.action(interval)
 
+        # # Background tasking is necessairy for maintaining running animation (not stable)
+        # self.background_task = threading.Thread(target=self.action(interval))
+        # self.background_task.start()
+        #
+        # animate_task = threading.Thread(target=self.running_animation())
+        # animate_task.start()
 
     @staticmethod
     def banner():
@@ -41,8 +57,8 @@ class AntiAway:
                       'green',
                       attrs=['blink']))
 
-    @staticmethod
-    def running_animation():
+    @classmethod
+    def running_animation(cls):
         frames = ["|", "/", "-", "\\"]
         while True:
             for frame in frames:
@@ -60,8 +76,8 @@ class AntiAway:
             print('Windows OS detected.')
             print('Have fun my child.\n')
 
-
-    def wizardry(self):
+    @staticmethod
+    def wizardry():
         import emoji
         """Unicode emoji print value"""
         # boo = '\U0001F47B'
@@ -78,26 +94,26 @@ class AntiAway:
                          f"{constantine}")
 
 
-    def always_here(self, value):
-        import keyboard
+    # def always_here(self, value):
+    #     import keyboard
+    #
+    #     if self.os_name == 'Linux':
+    #         # Maintaining F13 until I find a ghost key for linux systems
+    #         key = 'F13'
+    #     else:
+    #         key = 'a'
+    #
+    #     try:
+    #         i = 1
+    #         while i >= 1:
+    #             keyboard.send(key)
+    #             time.sleep(value)
+    #
+    #     except Exception as err:
+    #         sys.exit(f'\n\nAn exception occurred: \n{err}')
 
-        if self.os_name == 'Linux':
-            # Maintaining F13 until I find a ghost key for linux systems
-            key = 'F13'
-        else:
-            key = 'F13'
-
-        try:
-            i = 1
-            while i >= 1:
-                self.running_animation()
-                keyboard.send(key)
-                time.sleep(value)
-
-        except Exception as err:
-            sys.exit(f'\n\nAn exception occurred: \n{err}')
-
-    def action(self):
+    @staticmethod
+    def action_menu():
         from colorama import Fore
 
         while True:
@@ -111,85 +127,102 @@ class AntiAway:
 
                 user_input = float(interval)
 
-                self.wizardry()
-                print('\n')
-                self.always_here(user_input)
+                if user_input:
+                    return user_input
 
             except ValueError:
                 print('\n')
                 print(rf"{Fore.RED}Please insert a valid value: {Fore.RESET}")
 
-            except KeyboardInterrupt:
-                print('\n')
-                print(rf"{Fore.GREEN}Successful exorcism!{Fore.RESET}")
-                print('\n')
-                sys.exit(1)
 
-    def install_requirements(self):
-        req_file_w = '.\\requirements.txt'
-        req_file_l = './requirements.txt'
+    def action(self, timer):
+        import keyboard
+        from colorama import Fore
+
+        try:
+
+            self.wizardry()
+            print('\n')
+
+            # self.always_here(user_input)
+
+            if self.os_name == 'Linux':
+                # Maintaining F13 until I find a ghost key for linux systems
+                key = 'F13'
+            else:
+                key = 'F13'
+
+            i = 1
+            while i >= 1:
+                keyboard.send(key)
+                time.sleep(timer)
+
+        except KeyboardInterrupt:
+            print('\n')
+
+            print(rf"{Fore.GREEN}Successful exorcism!{Fore.RESET}")
+            print('\n')
+            sys.exit(1)
+
+    @staticmethod
+    def is_package_installed(package_name):
+        try:
+            import importlib
+            importlib.import_module(package_name)
+            return True
+        except ImportError:
+            return False
+
+
+    def install_missing_packages(self, packages):
+        checkmark = '\u2713'
 
         try:
             if self.os_name == 'Windows':
 
-                with open(req_file_w, 'r') as file:
-                    requirements = file.read().splitlines()
+                missing_packages = [pkg for pkg in packages if not self.is_package_installed(pkg)]
 
-                user_input = input("\nHint: If requirements were "
-                                   "already installed, you can "
-                                   "choose ( n ) to proceed.\n"
-                                   "Do you want to proceed with "
-                                   "the installation? (y/n): ")
-
-                if user_input.lower() == 'y':
-                    subprocess.check_call(['pip', 'install'] + requirements)
+                if missing_packages:
+                    print(f"Installing missing packages: {', '.join(missing_packages)}")
+                    subprocess.check_call([sys.executable, '-m', 'pip', 'install', *missing_packages])
+                    print(f'\nInstallation finished. [{checkmark}]')
                     time.sleep(2)
                     os.system('cls')
                 else:
-                    print("\nInstallation aborted.")
+                    print(f'\nRequirements already installed. [{checkmark}]')
                     time.sleep(2)
                     os.system('cls')
 
-            elif self.os_name == 'Linux':
-                with open(req_file_l, 'r') as file:
-                    requirements = file.read().splitlines()
+            elif self.os_name == 'Linux' and os.geteuid() != 0:
+                # Running as root
 
-                if os.geteuid() == 0:
-                    # Running as root
-                    user_input = input("\nHint: If requirements were "
-                                       "already installed, you can "
-                                       "choose ( n ) to proceed.\n"
-                                       "Do you want to proceed with "
-                                       "the installation? (y/n): ")
+                print("\nIt's recommended to run this script as root (sudo) "
+                      "on Linux for system-wide installation.\n")
 
-                    if user_input.lower() == 'y':
-                        subprocess.check_call(['pip', 'install'] +
-                                              requirements)
-                        time.sleep(2)
-                        os.system('clear')
+                print("You can run the script as root using: "
+                      "sudo python anti_away.py\n")
 
-                    else:
-                        print("\nInstallation aborted.")
-                        time.sleep(2)
-                        os.system('clear')
-                else:
-                    print("\nIt's recommended to run this script as root (sudo) "
-                          "on Linux for system-wide installation.\n")
+                print("If you want to install packages in a "
+                      "virtual environment, use a virtual environment.\n")
 
-                    print("You can run the script as root using: "
-                          "sudo python anti_away.py\n")
+                print("\nExiting...")
+                sys.exit(1)
 
-                    print("If you want to install packages in a "
-                          "virtual environment, use a virtual environment.\n")
-
-                    print("\nExiting...")
-                    sys.exit(1)
             else:
-                print("\nUnsupported operating system:", self.os_name)
+                missing_packages = [pkg for pkg in packages if not self.is_package_installed(pkg)]
 
-        except FileNotFoundError:
-            print("\nrequirements.txt file not found.")
-
+                if missing_packages:
+                    print(f"\nInstalling missing packages: {', '.join(missing_packages)}")
+                    subprocess.check_call([sys.executable, '-m', 'pip', 'install', *missing_packages])
+                    print(f'\nInstallation finished. [{checkmark}]')
+                    time.sleep(2)
+                    os.system('cls')
+                else:
+                    print(f'\nRequirements already installed. [{checkmark}]')
+                    time.sleep(2)
+                    os.system('cls')
+        except Exception as ex:
+            print('\nAn exception occurred: \n', ex)
 
 
 if __name__ == '__main__':
