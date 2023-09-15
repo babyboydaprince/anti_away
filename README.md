@@ -65,7 +65,7 @@ git clone https://github.com/babyboydaprince/anti_away.git
 
 python anti_away.py
 
-And you will be propter to installl the requirements automatically.
+And you will be propted to installl the requirements automatically.
 ```
 ```
 Choose ( y ) to proceed with installation or ( n ) to abort it.
