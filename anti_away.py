@@ -185,18 +185,8 @@ class AntiAway:
                     print("If you want to install packages in a "
                           "virtual environment, use a virtual environment.\n")
 
-                    user_input = input("\nDo you want to proceed "
-                                       "with the installation? (y/n): ")
-
-                    if user_input.lower() == 'y':
-                        subprocess.check_call(['pip', 'install'] +
-                                              requirements)
-                        time.sleep(2)
-                        os.system('clear')
-                    else:
-                        print("\nInstallation aborted.")
-                        time.sleep(2)
-                        os.system('clear')
+                    print("\nExiting...")
+                    sys.exit(1)
             else:
                 print("\nUnsupported operating system:", self.os_name)
 
