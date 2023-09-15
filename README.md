@@ -9,12 +9,14 @@ Perfect for not being away for inactivity reasons.
 
 ```
 Open terminal on anti_away.py file path
-
+```
+```
 Run simply with:
 
 python anti_away.py
-
-then insert a number value for execution interval.
+```
+```
+Then insert a number value for execution interval.
 ```
 
 ```
@@ -23,8 +25,9 @@ To stop the running script:
 CTRL + C
 
 on terminal screen.
-
-it does not leave any running process after closing the script.
+```
+```
+It does not leave any running process after closing the script.
 ```
 
 ### 📋 Prerequisites
