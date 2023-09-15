@@ -1,14 +1,10 @@
 import errno
 import os
-# import emoji
 import sys
 import keyboard
 import time
 import platform
 import subprocess
-# from pyfiglet import Figlet
-# from termcolor import colored
-# from colorama import Fore
 
 
 """Anti-Away was created to assist you 
