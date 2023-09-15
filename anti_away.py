@@ -193,6 +193,21 @@ class AntiAway:
                     time.sleep(2)
                     os.system('cls')
 
+            elif self.os_name == 'Linux':
+
+                missing_packages = [pkg for pkg in packages if not self.is_package_installed(pkg)]
+
+                if missing_packages:
+                    print(f"Installing missing packages: {', '.join(missing_packages)}")
+                    subprocess.check_call([sys.executable, '-m', 'pip', 'install', *missing_packages])
+                    print(f'\nInstallation finished. [{checkmark}]')
+                    time.sleep(2)
+                    os.system('cls')
+                else:
+                    print(f'\nRequirements already installed. [{checkmark}]')
+                    time.sleep(2)
+                    os.system('clear')
+
             elif self.os_name == 'Linux' and os.geteuid() != 0:
                 # Running as root
 
@@ -220,7 +235,7 @@ class AntiAway:
                 else:
                     print(f'\nRequirements already installed. [{checkmark}]')
                     time.sleep(2)
-                    os.system('cls')
+                    sys.stdout.flush()
         except Exception as ex:
             print('\nAn exception occurred: \n', ex)
 
