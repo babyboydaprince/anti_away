@@ -52,6 +52,15 @@ class AntiAway:
                       'green',
                       attrs=['blink']))
 
+    @staticmethod
+    def running_animation():
+        frames = ["|", "/", "-", "\\"]
+        while True:
+            for frame in frames:
+                sys.stdout.write(f"\rRunning {frame}")
+                sys.stdout.flush()
+                time.sleep(0.1)  # Adjust the speed of animation here
+
 
     def os_hint(self):
         if self.os_name == 'Linux':
@@ -74,7 +83,7 @@ class AntiAway:
 
     def always_here(self, value):
         if self.os_name == 'Linux':
-            # Maintaining F13 until I find a ghost key
+            # Maintaining F13 until I find a ghost key for linux systems
             key = 'F13'
         else:
             key = 'F13'
@@ -82,11 +91,14 @@ class AntiAway:
         try:
             i = 1
             while i >= 1:
+                self.running_animation()
                 keyboard.send(key)
                 time.sleep(value)
+
         except IOError as io:
             if io[0] == errno.EPERM:
                 sys.exit(f'You must be root/adm to run it: \n{io}')
+
         except Exception as err:
             sys.exit(f'\n\nAn exception occurred: \n{err}')
 
@@ -103,6 +115,7 @@ class AntiAway:
                 user_input = float(interval)
 
                 self.wizardry()
+                print('\n')
                 self.always_here(user_input)
 
             except ValueError:
@@ -189,6 +202,7 @@ class AntiAway:
 
         except FileNotFoundError:
             print("\nrequirements.txt file not found.")
+
 
 
 if __name__ == '__main__':
