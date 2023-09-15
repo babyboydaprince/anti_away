@@ -1,6 +1,6 @@
 # Anti Away
 
-Simple python script which uses KEYBOARD lib to contantly press a ghost key.
+Simple python script which uses KEYBOARD lib to constantly press a ghost key.
 Perfect for not being away for inactivity reasons.
 
 ![alt text](https://github.com/babyboydaprince/anti_away/blob/main/img/anti-away.gif?raw=true)
@@ -37,10 +37,10 @@ It does not leave any running process after closing the script.
 
  <font color="red">Quick warning</font>: Running on basic shell environments may break graphical elements<br> 
  but it will not break the functionality itself.<br><br>
-Gaphical elements are fun, but if you don't really care about them, just go on and it<br> will function normally.<br><br>
+Graphical elements are fun, but if you don't really care about them, just go on and it<br> will function normally.<br><br>
 In case you care about it, the recommended shell environments are:
 - Windows Powershell (with or without OH-MY-POSH)
-- Windows Terminal (modern windows terminal environment, just search it on search bar instead of CMD)
+- Windows Terminal (modern Windows terminal environment, just search it on search bar instead of CMD)
 - ZSH
 - BASH
 
@@ -65,21 +65,20 @@ git clone https://github.com/babyboydaprince/anti_away.git
 
 python anti_away.py
 
-And you will be propted to install the requirements automatically.
-```
-```
-Choose ( y ) to proceed with installation or ( n ) to abort it.
+And it will check if you already have the requirements installed,
+in case you don't, it will install it automatically.
+
+It doesn't need requirements.txt usage.
 ```
 ```
 Hint:
-In case you've already installed the requirements, choose ( n )
-to proceed to the main script.
+Linux OS users must run the script as root.
 ```
 ```
 Have Fun :P
 ```
 
-### 🔧 Manual Installation
+### 🔧 Manual Installation - in case of auto install failure
 ```
 1 - Download project zip file or clone the project:
 
@@ -89,16 +88,11 @@ git clone https://github.com/babyboydaprince/anti_away.git
 2 - Extract it using your favourite tool, ex: winrar, 7-zip.
 ```
 ```
-3 - Inside the project directory, run: 
+3 - Inside the project folder, run:
 
 pip install -r requirements.txt
 
-to install the requirements.
-```
-```
-Hint:
-In case of manual installation, just hit ( n ) to abort automated installation on init 
-and proceed to the main script.
+and you are all set.
 ```
 ```
 Have fun :P
