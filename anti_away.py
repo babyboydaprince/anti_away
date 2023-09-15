@@ -1,14 +1,14 @@
 import errno
 import os
-import emoji
+# import emoji
 import sys
 import keyboard
 import time
 import platform
 import subprocess
-from pyfiglet import Figlet
-from termcolor import colored
-from colorama import Fore
+# from pyfiglet import Figlet
+# from termcolor import colored
+# from colorama import Fore
 
 
 """Anti-Away was created to assist you 
@@ -21,14 +21,6 @@ class AntiAway:
 
     """SET-UP"""
     def __init__(self):
-        """Unicode emoji print value"""
-        # self.boo = '\U0001F47B'
-        # self.constantine = '\u271D'
-
-        """In case of emoji lib usage"""
-        self.boo = emoji.emojize(':ghost:')
-        self.constantine = emoji.emojize(':latin_cross:')
-
         self.os_name = platform.system()
 
         self.install_requirements()
@@ -44,6 +36,9 @@ class AntiAway:
 
     @staticmethod
     def banner():
+        from pyfiglet import Figlet
+        from termcolor import colored
+
         """BANNER"""
         f = Figlet(font='mini')
 
@@ -73,12 +68,20 @@ class AntiAway:
 
 
     def wizardry(self):
-        print(f"\n{self.boo}")
+        import emoji
+        """Unicode emoji print value"""
+        # boo = '\U0001F47B'
+        # constantine = '\u271D'
+
+        """In case of emoji lib usage"""
+        boo = emoji.emojize(':ghost:')
+        constantine = emoji.emojize(':latin_cross:')
+        print(f"\n{boo}")
         sys.stdout.write("It must be some kind of wizardry\n"
                          "or a ghost...\n"
                          "WTF...\n"
                          f"\nHit [ CTRL + C ] to call John Constantine "
-                         f"{self.constantine}")
+                         f"{constantine}")
 
 
     def always_here(self, value):
@@ -103,6 +106,8 @@ class AntiAway:
             sys.exit(f'\n\nAn exception occurred: \n{err}')
 
     def action(self):
+        from colorama import Fore
+
         while True:
             try:
                 interval = input("\nChoose the execution interval "
