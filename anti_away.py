@@ -57,6 +57,7 @@ class AntiAway:
                       'green',
                       attrs=['blink']))
 
+
     @classmethod
     def running_animation(cls):
         frames = ["|", "/", "-", "\\"]
@@ -76,6 +77,7 @@ class AntiAway:
             print('Windows OS detected.')
             print('Have fun my child.\n')
 
+
     @staticmethod
     def wizardry():
         import emoji
@@ -93,24 +95,6 @@ class AntiAway:
                          f"\nHit [ CTRL + C ] to call John Constantine "
                          f"{constantine}")
 
-
-    # def always_here(self, value):
-    #     import keyboard
-    #
-    #     if self.os_name == 'Linux':
-    #         # Maintaining F13 until I find a ghost key for linux systems
-    #         key = 'F13'
-    #     else:
-    #         key = 'a'
-    #
-    #     try:
-    #         i = 1
-    #         while i >= 1:
-    #             keyboard.send(key)
-    #             time.sleep(value)
-    #
-    #     except Exception as err:
-    #         sys.exit(f'\n\nAn exception occurred: \n{err}')
 
     @staticmethod
     def action_menu():
@@ -163,6 +147,7 @@ class AntiAway:
             print('\n')
             sys.exit(1)
 
+    # Installed dependency checker
     @staticmethod
     def is_package_installed(package_name):
         try:
@@ -172,7 +157,7 @@ class AntiAway:
         except ImportError:
             return False
 
-
+    # Install missing dependencies and check root exec
     def install_missing_packages(self, packages):
         checkmark = '\u2713'
 
