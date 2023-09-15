@@ -44,7 +44,7 @@ In case you care about it, the recommended shell environments are:
 - ZSH
 - BASH
 
-If you enjoy customization, powerline fonts and nerd fonts are a plus, but are'nt required.
+If you enjoy customization, powerline fonts and nerd fonts are a plus, but aren't required.
 
 That's all folks.
 
