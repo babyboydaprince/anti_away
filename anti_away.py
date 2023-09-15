@@ -140,10 +140,6 @@ class AntiAway:
         from colorama import Fore
 
         try:
-
-            self.wizardry()
-            print('\n')
-
             # self.always_here(user_input)
 
             if self.os_name == 'Linux':
@@ -151,6 +147,9 @@ class AntiAway:
                 key = 'F13'
             else:
                 key = 'F13'
+
+            self.wizardry()
+            print('\n')
 
             i = 1
             while i >= 1:
