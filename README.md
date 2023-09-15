@@ -1,7 +1,7 @@
 # Anti Away
 
 Simple python script which uses KEYBOARD lib to constantly press a ghost key.
-Perfect for not being away for inactivity reasons.
+Perfect for not letting the screen lock automatically.
 
 ![alt text](https://github.com/babyboydaprince/anti_away/blob/main/img/anti-away.gif?raw=true)
 
