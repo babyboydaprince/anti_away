@@ -32,6 +32,22 @@ it does not leave any running process after closing the script.
 - Python 3
 - Installing requirements
 
+ <font color="red">Quick warning</font>: Running on basic shell environments may break graphical elements<br> 
+ but it will not break the functionality itself.<br><br>
+Gaphical elements are fun, but if you don't really care about them, just go on and it<br> will function normally.<br><br>
+In case you care about it, the recommended shell environments are:
+- Windows Powershell (with or without OH-MY-POSH)
+- Windows Terminal (modern windows terminal environment, just search it on search bar instead of CMD)
+- ZSH
+- BASH
+
+If you enjoy customization, powerline fonts and nerd fonts are a plus, but are'nt required.
+
+That's all folks.
+
+✌️👽
+
+
 ### 🔧 Automated Installation
 ```
 1 - Download project zip file or clone the project:
